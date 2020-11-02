@@ -1,6 +1,5 @@
-from src.filesys_functions.project_safety import project_dir_safe_path
+from filesystem_api.filesys_functions.project_safety import project_dir_safe_path
 from pathlib import Path
-from typing import List
 
 
 @project_dir_safe_path

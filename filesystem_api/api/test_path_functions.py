@@ -1,11 +1,11 @@
 from pathlib import Path
-from src.api.path_functions import path_to_apipath
+from filesystem_api.api.path_functions import path_to_apipath
 import unittest
-from src.constants import API_ROOT_DIR
+import settings
 
 # TODO: implement endpoints
 
 class PathFunctionsTestCase(unittest.TestCase):
 
     def test_basic(self):
-        s = path_to_apipath(path= API_ROOT_DIR / 'dir1')
+        s = path_to_apipath(path= settings.API_ROOT_DIR / 'dir1')

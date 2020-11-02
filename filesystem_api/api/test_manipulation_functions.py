@@ -1,8 +1,8 @@
-from src.filesys_functions.project_safety import DirSafetyException
+from filesystem_api.filesys_functions.project_safety import DirSafetyException
 from pathlib import Path
-from src.constants import API_ROOT_DIR
+import settings
 import unittest
-from src.filesys_functions.manipulation_functions import touch, rm, mkdir, rmdir
+from filesystem_api.filesys_functions.manipulation_functions import touch, rm, mkdir, rmdir
 
 class ManipulationFunctionsTestCase(unittest.TestCase):
 
@@ -10,7 +10,7 @@ class ManipulationFunctionsTestCase(unittest.TestCase):
     def test_touch_and_rm(self):
         filename = 'test_touch.txt'
         
-        touched = touch(path=API_ROOT_DIR.joinpath(filename))
+        touched = touch(path=settings.API_ROOT_DIR.joinpath(filename))
         self.assertTrue(touched)
         removed = rm(path=touched)
         self.assertTrue(removed)
@@ -21,7 +21,7 @@ class ManipulationFunctionsTestCase(unittest.TestCase):
         with self.assertRaises(DirSafetyException): 
             mkdir(path=Path('../../outside_root_dir'))
         
-        madedir = mkdir(path=API_ROOT_DIR / dirname)
+        madedir = mkdir(path=settings.API_ROOT_DIR / dirname)
         with self.assertRaises(FileExistsError): 
             mkdir(path=madedir)
         
